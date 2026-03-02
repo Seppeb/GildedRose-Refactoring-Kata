@@ -34,7 +34,7 @@ class GildedRose {
             }
         } else if (item.name.equals(SULFURAS)) {
             return;
-        } else if (item.quality > 0) {
+        } else {
             decreaseQuality(item);
         }
     }
@@ -52,7 +52,7 @@ class GildedRose {
                 increaseQuality(item);
             } else if (item.name.equals(BACKSTAGE_PASSES)) {
                 item.quality = 0;
-            } else if (item.quality > 0 && !item.name.equals(SULFURAS)) {
+            } else if (!item.name.equals(SULFURAS)) {
                 decreaseQuality(item);
             }
         }
@@ -65,6 +65,8 @@ class GildedRose {
     }
 
     private void decreaseQuality(Item item) {
-        item.quality = item.quality - 1;
+        if (item.quality > 0) {
+            item.quality = item.quality - 1;
+        }
     }
 }
