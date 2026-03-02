@@ -6,7 +6,7 @@ public class InventoryItem {
     public static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
     public static final String AGED_BRIE = "Aged Brie";
     public static final String CONJURED = "Conjured";
-    private final Item item;
+    protected final Item item;
 
     public InventoryItem(Item item) {
         this.item = item;
@@ -14,6 +14,7 @@ public class InventoryItem {
 
     public static InventoryItem createInventoryItem(Item item) {
         if (item.name.equals(AGED_BRIE)) { return new AgedBrie(item); }
+        if (item.name.equals(BACKSTAGE_PASSES)) { return new BackstagePasses(item); }
         return new InventoryItem(item);
     }
 
@@ -27,15 +28,6 @@ public class InventoryItem {
 
     protected void updateQuality() {
         switch (item.name) {
-            case BACKSTAGE_PASSES:
-                increaseQuality();
-                if (item.sellIn < 11 && item.quality < 50) {
-                    increaseQuality();
-                }
-                if (item.sellIn < 6 && item.quality < 50) {
-                    increaseQuality();
-                }
-                break;
             case SULFURAS:
                 return;
             case CONJURED:
@@ -57,9 +49,6 @@ public class InventoryItem {
 
     protected void processExpiredItems() {
         switch (item.name) {
-            case BACKSTAGE_PASSES:
-                item.quality = 0;
-                break;
             case SULFURAS:
                 return;
             case CONJURED:
