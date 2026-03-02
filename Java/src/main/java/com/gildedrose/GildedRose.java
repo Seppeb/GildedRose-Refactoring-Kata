@@ -1,18 +1,18 @@
 package com.gildedrose;
 
+import java.util.List;
+
 import static com.gildedrose.InventoryItem.createInventoryItem;
 
 class GildedRose {
 
-    Item[] items;
+    List<Item> items;
 
-    public GildedRose(Item[] items) {
+    public GildedRose(List<Item> items) {
         this.items = items;
     }
 
     public void updateInventoryItems() {
-        for (Item item : items) {
-            createInventoryItem(item).updateItem();
-        }
+        items.forEach(item -> createInventoryItem(item).updateItem());
     }
 }
