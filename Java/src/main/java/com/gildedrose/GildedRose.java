@@ -26,23 +26,28 @@ class GildedRose {
     }
 
     private void updateQuality(Item item) {
-        if (item.name.equals(AGED_BRIE)) {
-            increaseQuality(item);
-        } else if (item.name.equals(BACKSTAGE_PASSES)) {
-            increaseQuality(item);
-            if (item.sellIn < 11 && item.quality < 50) {
+        switch (item.name) {
+            case AGED_BRIE:
                 increaseQuality(item);
-            }
-            if (item.sellIn < 6 && item.quality < 50) {
+                break;
+            case BACKSTAGE_PASSES:
                 increaseQuality(item);
-            }
-        } else if (item.name.equals(SULFURAS)) {
-            return;
-        } else if (item.name.equals(CONJURED)) {
-            decreaseQuality(item);
-            decreaseQuality(item);
-        } else {
-            decreaseQuality(item);
+                if (item.sellIn < 11 && item.quality < 50) {
+                    increaseQuality(item);
+                }
+                if (item.sellIn < 6 && item.quality < 50) {
+                    increaseQuality(item);
+                }
+                break;
+            case SULFURAS:
+                return;
+            case CONJURED:
+                decreaseQuality(item);
+                decreaseQuality(item);
+                break;
+            default:
+                decreaseQuality(item);
+                break;
         }
     }
 
@@ -54,17 +59,22 @@ class GildedRose {
     }
 
     private void processExpiredItems(Item item) {
-        if (item.name.equals(AGED_BRIE)) {
-            increaseQuality(item);
-        } else if (item.name.equals(BACKSTAGE_PASSES)) {
-            item.quality = 0;
-        } else if (item.name.equals(SULFURAS)) {
-            return;
-        } else if (item.name.equals(CONJURED)) {
-            decreaseQuality(item);
-            decreaseQuality(item);
-        } else {
-            decreaseQuality(item);
+        switch (item.name) {
+            case AGED_BRIE:
+                increaseQuality(item);
+                break;
+            case BACKSTAGE_PASSES:
+                item.quality = 0;
+                break;
+            case SULFURAS:
+                return;
+            case CONJURED:
+                decreaseQuality(item);
+                decreaseQuality(item);
+                break;
+            default:
+                decreaseQuality(item);
+                break;
         }
     }
 
