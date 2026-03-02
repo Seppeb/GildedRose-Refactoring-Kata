@@ -10,6 +10,8 @@ public class Conjured extends InventoryItem {
 
     @Override
     protected void decreaseQuality() {
-        item.quality = item.quality - 2;
+        if (item.quality > 0) {
+            item.quality = item.quality - 2;
+        }
     }
 }
