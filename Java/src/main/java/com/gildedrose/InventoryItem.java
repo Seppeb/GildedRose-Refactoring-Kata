@@ -13,6 +13,8 @@ public class InventoryItem {
     }
 
     public static InventoryItem createInventoryItem(Item item) {
+        if (item.name.equals(AGED_BRIE)) { return new AgedBrie(item); }
+
         return new InventoryItem(item);
     }
 

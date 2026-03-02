@@ -3,7 +3,6 @@ package com.gildedrose;
 import static com.gildedrose.InventoryItem.*;
 
 class GildedRose {
-
     Item[] items;
 
     public GildedRose(Item[] items) {
