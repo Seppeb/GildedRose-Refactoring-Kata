@@ -8,43 +8,12 @@ public class InventoryItem {
         this.item = item;
     }
 
-    protected void decreaseQuality(Item item) {
-        if (item.quality > 0) {
-            item.quality = item.quality - 1;
+    public void updateItem(Item item) {
+        updateQuality(item);
+        updateSellIn(item);
+        if (item.sellIn < 0) {
+            processExpiredItems(item);
         }
-    }
-
-    protected void increaseQuality(Item item) {
-        if (item.quality < 50) {
-            item.quality = item.quality + 1;
-        }
-    }
-
-    protected void processExpiredItems(Item item) {
-        switch (item.name) {
-            case GildedRose.AGED_BRIE:
-                increaseQuality(item);
-                break;
-            case GildedRose.BACKSTAGE_PASSES:
-                item.quality = 0;
-                break;
-            case GildedRose.SULFURAS:
-                return;
-            case GildedRose.CONJURED:
-                decreaseQuality(item);
-                decreaseQuality(item);
-                break;
-            default:
-                decreaseQuality(item);
-                break;
-        }
-    }
-
-    protected void updateSellIn(Item item) {
-        if (item.name.equals(GildedRose.SULFURAS)) {
-            return;
-        }
-        item.sellIn--;
     }
 
     protected void updateQuality(Item item) {
@@ -73,11 +42,42 @@ public class InventoryItem {
         }
     }
 
-    public void updateItem(Item item) {
-        updateQuality(item);
-        updateSellIn(item);
-        if (item.sellIn < 0) {
-            processExpiredItems(item);
+    protected void updateSellIn(Item item) {
+        if (item.name.equals(GildedRose.SULFURAS)) {
+            return;
+        }
+        item.sellIn--;
+    }
+
+    protected void processExpiredItems(Item item) {
+        switch (item.name) {
+            case GildedRose.AGED_BRIE:
+                increaseQuality(item);
+                break;
+            case GildedRose.BACKSTAGE_PASSES:
+                item.quality = 0;
+                break;
+            case GildedRose.SULFURAS:
+                return;
+            case GildedRose.CONJURED:
+                decreaseQuality(item);
+                decreaseQuality(item);
+                break;
+            default:
+                decreaseQuality(item);
+                break;
+        }
+    }
+
+    protected void decreaseQuality(Item item) {
+        if (item.quality > 0) {
+            item.quality = item.quality - 1;
+        }
+    }
+
+    protected void increaseQuality(Item item) {
+        if (item.quality < 50) {
+            item.quality = item.quality + 1;
         }
     }
 }
