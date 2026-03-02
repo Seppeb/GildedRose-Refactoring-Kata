@@ -9,18 +9,13 @@ public class InventoryItem {
     }
 
     public static InventoryItem createInventoryItem(Item item) {
-        switch (item.name) {
-            case AgedBrie.NAME:
-                return new AgedBrie(item);
-            case BackstagePasses.NAME:
-                return new BackstagePasses(item);
-            case Sulfuras.NAME:
-                return new Sulfuras(item);
-            case Conjured.NAME:
-                return new Conjured(item);
-            default:
-                return new InventoryItem(item);
-        }
+        return switch (item.name) {
+            case AgedBrie.NAME -> new AgedBrie(item);
+            case BackstagePasses.NAME -> new BackstagePasses(item);
+            case Sulfuras.NAME -> new Sulfuras(item);
+            case Conjured.NAME -> new Conjured(item);
+            default -> new InventoryItem(item);
+        };
     }
 
     public void updateItem() {
