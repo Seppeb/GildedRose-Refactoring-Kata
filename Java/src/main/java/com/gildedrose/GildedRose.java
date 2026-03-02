@@ -18,7 +18,9 @@ class GildedRose {
     private void updateItem(Item item) {
         updateQuality(item);
         updateSellIn(item);
-        processExpiredItems(item);
+        if (item.sellIn < 0) {
+            processExpiredItems(item);
+        }
     }
 
     private void updateQuality(Item item) {
@@ -47,16 +49,14 @@ class GildedRose {
     }
 
     private void processExpiredItems(Item item) {
-        if (item.sellIn < 0) {
-            if (item.name.equals(AGED_BRIE)) {
-                increaseQuality(item);
-            } else if (item.name.equals(BACKSTAGE_PASSES)) {
-                item.quality = 0;
-            } else if (item.name.equals(SULFURAS)) {
-                return;
-            } else {
-                decreaseQuality(item);
-            }
+        if (item.name.equals(AGED_BRIE)) {
+            increaseQuality(item);
+        } else if (item.name.equals(BACKSTAGE_PASSES)) {
+            item.quality = 0;
+        } else if (item.name.equals(SULFURAS)) {
+            return;
+        } else {
+            decreaseQuality(item);
         }
     }
 
