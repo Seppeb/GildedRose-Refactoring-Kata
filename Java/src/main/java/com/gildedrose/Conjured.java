@@ -11,7 +11,7 @@ public class Conjured extends InventoryItem {
     @Override
     protected void decreaseQuality() {
         if (item.quality > 0) {
-            item.quality = item.quality - 2;
+            item.quality = Math.max(0, item.quality - 2);
         }
     }
 }
