@@ -31,25 +31,25 @@ class GildedRose {
     private void updateQuality(Item item, InventoryItem inventoryItem) {
         switch (item.name) {
             case AGED_BRIE:
-                increaseQuality(item, inventoryItem);
+                inventoryItem.increaseQuality(item);
                 break;
             case BACKSTAGE_PASSES:
-                increaseQuality(item, inventoryItem);
+                inventoryItem.increaseQuality(item);
                 if (item.sellIn < 11 && item.quality < 50) {
-                    increaseQuality(item, inventoryItem);
+                    inventoryItem.increaseQuality(item);
                 }
                 if (item.sellIn < 6 && item.quality < 50) {
-                    increaseQuality(item, inventoryItem);
+                    inventoryItem.increaseQuality(item);
                 }
                 break;
             case SULFURAS:
                 return;
             case CONJURED:
-                decreaseQuality(item, inventoryItem);
-                decreaseQuality(item, inventoryItem);
+                inventoryItem.decreaseQuality(item);
+                inventoryItem.decreaseQuality(item);
                 break;
             default:
-                decreaseQuality(item, inventoryItem);
+                inventoryItem.decreaseQuality(item);
                 break;
         }
     }
@@ -64,7 +64,7 @@ class GildedRose {
     private void processExpiredItems(Item item, InventoryItem inventoryItem) {
         switch (item.name) {
             case AGED_BRIE:
-                increaseQuality(item, inventoryItem);
+                inventoryItem.increaseQuality(item);
                 break;
             case BACKSTAGE_PASSES:
                 item.quality = 0;
@@ -72,24 +72,12 @@ class GildedRose {
             case SULFURAS:
                 return;
             case CONJURED:
-                decreaseQuality(item, inventoryItem);
-                decreaseQuality(item, inventoryItem);
+                inventoryItem.decreaseQuality(item);
+                inventoryItem.decreaseQuality(item);
                 break;
             default:
-                decreaseQuality(item, inventoryItem);
+                inventoryItem.decreaseQuality(item);
                 break;
-        }
-    }
-
-    private void increaseQuality(Item item, InventoryItem inventoryItem) {
-        if (item.quality < 50) {
-            item.quality = item.quality + 1;
-        }
-    }
-
-    private void decreaseQuality(Item item, InventoryItem inventoryItem) {
-        if (item.quality > 0) {
-            item.quality = item.quality - 1;
         }
     }
 }
