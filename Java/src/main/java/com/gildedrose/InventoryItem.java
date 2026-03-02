@@ -2,10 +2,6 @@ package com.gildedrose;
 
 public class InventoryItem {
 
-    public static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
-    public static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
-    public static final String AGED_BRIE = "Aged Brie";
-    public static final String CONJURED = "Conjured";
     protected final Item item;
 
     public InventoryItem(Item item) {
@@ -14,13 +10,13 @@ public class InventoryItem {
 
     public static InventoryItem createInventoryItem(Item item) {
         switch (item.name) {
-            case AGED_BRIE:
+            case AgedBrie.AGED_BRIE:
                 return new AgedBrie(item);
-            case BACKSTAGE_PASSES:
+            case BackstagePasses.BACKSTAGE_PASSES:
                 return new BackstagePasses(item);
-            case SULFURAS:
+            case Sulfuras.SULFURAS:
                 return new Sulfuras(item);
-            case CONJURED:
+            case Conjured.CONJURED:
                 return new Conjured(item);
             default:
                 return new InventoryItem(item);

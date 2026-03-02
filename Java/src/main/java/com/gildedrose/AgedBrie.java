@@ -2,6 +2,8 @@ package com.gildedrose;
 
 public class AgedBrie extends InventoryItem {
 
+    public static final String AGED_BRIE = "Aged Brie";
+
     public AgedBrie(Item item) {
         super(item);
     }
