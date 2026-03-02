@@ -22,8 +22,9 @@ class GildedRose {
     }
 
     private void updateQuality(Item item) {
-        if (item.name.equals(AGED_BRIE)
-            || item.name.equals(BACKSTAGE_PASSES)) {
+        if (item.name.equals(AGED_BRIE)) {
+            updateQualityAgedBriedAndBackstagePasses(item);
+        } else if (item.name.equals(BACKSTAGE_PASSES)) {
             updateQualityAgedBriedAndBackstagePasses(item);
         } else if (item.quality > 0 && !item.name.equals(SULFURAS)) {
             decreaseQuality(item);
