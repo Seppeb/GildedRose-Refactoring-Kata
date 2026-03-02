@@ -47,7 +47,7 @@ class GildedRose {
         if (item.name.equals(SULFURAS)) {
             return;
         }
-        item.sellIn = item.sellIn - 1;
+        item.sellIn--;
     }
 
     private void processExpiredItems(Item item) {
