@@ -14,7 +14,10 @@ class GildedRose {
     }
 
     public void updateInventoryItems() {
-        for (Item item : items) updateItem(item);
+        for (Item item : items) {
+            InventoryItem inventoryItem = new InventoryItem(item);
+            updateItem(item);
+        }
     }
 
     private void updateItem(Item item) {
