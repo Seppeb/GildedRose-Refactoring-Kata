@@ -14,7 +14,6 @@ public class InventoryItem {
 
     public static InventoryItem createInventoryItem(Item item) {
         if (item.name.equals(AGED_BRIE)) { return new AgedBrie(item); }
-
         return new InventoryItem(item);
     }
 
@@ -28,9 +27,6 @@ public class InventoryItem {
 
     protected void updateQuality() {
         switch (item.name) {
-            case AGED_BRIE:
-                increaseQuality();
-                break;
             case BACKSTAGE_PASSES:
                 increaseQuality();
                 if (item.sellIn < 11 && item.quality < 50) {
@@ -61,9 +57,6 @@ public class InventoryItem {
 
     protected void processExpiredItems() {
         switch (item.name) {
-            case AGED_BRIE:
-                increaseQuality();
-                break;
             case BACKSTAGE_PASSES:
                 item.quality = 0;
                 break;

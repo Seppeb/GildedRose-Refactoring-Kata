@@ -5,4 +5,14 @@ public class AgedBrie extends InventoryItem {
     public AgedBrie(Item item) {
         super(item);
     }
+
+    @Override
+    protected void updateQuality() {
+        increaseQuality();
+    }
+
+    @Override
+    protected void processExpiredItems() {
+        increaseQuality();
+    }
 }
