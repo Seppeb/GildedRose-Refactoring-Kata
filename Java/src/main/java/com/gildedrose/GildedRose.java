@@ -23,9 +23,7 @@ class GildedRose {
 
     private void updateQuality(Item item) {
         if (item.name.equals(AGED_BRIE)) {
-            if (item.quality < 50) {
-                increaseQuality(item);
-            }
+            increaseQuality(item);
         } else if (item.name.equals(BACKSTAGE_PASSES)) {
             if (item.quality < 50) {
                 increaseQuality(item);
@@ -61,15 +59,15 @@ class GildedRose {
                     item.quality = 0;
                 }
             } else {
-                if (item.quality < 50) {
-                    increaseQuality(item);
-                }
+                increaseQuality(item);
             }
         }
     }
 
     private void increaseQuality(Item item) {
-        item.quality = item.quality + 1;
+        if (item.quality < 50) {
+            item.quality = item.quality + 1;
+        }
     }
 
     private void decreaseQuality(Item item) {
