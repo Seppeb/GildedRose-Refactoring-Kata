@@ -16,6 +16,7 @@ public class InventoryItem {
         if (item.name.equals(AGED_BRIE)) { return new AgedBrie(item); }
         if (item.name.equals(BACKSTAGE_PASSES)) { return new BackstagePasses(item); }
         if (item.name.equals(SULFURAS)) { return new Sulfuras(item); }
+        if (item.name.equals(CONJURED)) { return new Conjured(item); }
         return new InventoryItem(item);
     }
 
@@ -29,10 +30,6 @@ public class InventoryItem {
 
     protected void updateQuality() {
         switch (item.name) {
-            case CONJURED:
-                decreaseQuality();
-                decreaseQuality();
-                break;
             default:
                 decreaseQuality();
                 break;
@@ -45,10 +42,6 @@ public class InventoryItem {
 
     protected void processExpiredItems() {
         switch (item.name) {
-            case CONJURED:
-                decreaseQuality();
-                decreaseQuality();
-                break;
             default:
                 decreaseQuality();
                 break;
