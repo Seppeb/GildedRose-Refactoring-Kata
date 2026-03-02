@@ -15,11 +15,7 @@ class GildedRose {
 
     public void updateInventoryItems() {
         for (Item item : items) {
-            createInventoryItem(item).updateItem();
+            item.createInventoryItem().updateItem();
         }
-    }
-
-    private InventoryItem createInventoryItem(Item item) {
-        return new InventoryItem(item);
     }
 }
