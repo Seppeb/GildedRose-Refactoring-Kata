@@ -13,11 +13,18 @@ public class InventoryItem {
     }
 
     public static InventoryItem createInventoryItem(Item item) {
-        if (item.name.equals(AGED_BRIE)) { return new AgedBrie(item); }
-        if (item.name.equals(BACKSTAGE_PASSES)) { return new BackstagePasses(item); }
-        if (item.name.equals(SULFURAS)) { return new Sulfuras(item); }
-        if (item.name.equals(CONJURED)) { return new Conjured(item); }
-        return new InventoryItem(item);
+        switch (item.name) {
+            case AGED_BRIE:
+                return new AgedBrie(item);
+            case BACKSTAGE_PASSES:
+                return new BackstagePasses(item);
+            case SULFURAS:
+                return new Sulfuras(item);
+            case CONJURED:
+                return new Conjured(item);
+            default:
+                return new InventoryItem(item);
+        }
     }
 
     public void updateItem() {
@@ -29,11 +36,7 @@ public class InventoryItem {
     }
 
     protected void updateQuality() {
-        switch (item.name) {
-            default:
-                decreaseQuality();
-                break;
-        }
+        decreaseQuality();
     }
 
     protected void updateSellIn() {
@@ -41,11 +44,7 @@ public class InventoryItem {
     }
 
     protected void processExpiredItems() {
-        switch (item.name) {
-            default:
-                decreaseQuality();
-                break;
-        }
+        decreaseQuality();
     }
 
     protected void decreaseQuality() {

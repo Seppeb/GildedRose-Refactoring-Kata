@@ -10,7 +10,7 @@ class GildedRoseTest {
     @Test
     void normalItem_decreaseQualityByOne() {
         Item item = new Item("Normal Item", 10, 20);
-        GildedRose app = new GildedRose(new Item[] { item });
+        GildedRose app = new GildedRose(new Item[]{item});
 
         app.updateInventoryItems();
         assertEquals(9, item.sellIn);
@@ -20,7 +20,7 @@ class GildedRoseTest {
     @Test
     void allItems_qualityNeverNegative() {
         Item item = new Item("Normal Item", 10, 0);
-        GildedRose app = new GildedRose(new Item[] { item });
+        GildedRose app = new GildedRose(new Item[]{item});
 
         app.updateInventoryItems();
         assertEquals(9, item.sellIn);
@@ -30,7 +30,7 @@ class GildedRoseTest {
     @Test
     void allItems_qualityNeverExceedsFifty() {
         Item item = new Item("Aged Brie", 10, 50);
-        GildedRose app = new GildedRose(new Item[] { item });
+        GildedRose app = new GildedRose(new Item[]{item});
 
         app.updateInventoryItems();
         assertEquals(9, item.sellIn);
@@ -40,7 +40,7 @@ class GildedRoseTest {
     @Test
     void agedBrie_increaseQualityByOne() {
         Item item = new Item("Aged Brie", 10, 20);
-        GildedRose app = new GildedRose(new Item[] { item });
+        GildedRose app = new GildedRose(new Item[]{item});
 
         app.updateInventoryItems();
         assertEquals(9, item.sellIn);
@@ -50,7 +50,7 @@ class GildedRoseTest {
     @Test
     void backStagePasses_increaseQualityByOneWhenSellInGreaterThanTen() {
         Item item = new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20);
-        GildedRose app = new GildedRose(new Item[] { item });
+        GildedRose app = new GildedRose(new Item[]{item});
 
         app.updateInventoryItems();
         assertEquals(14, item.sellIn);
