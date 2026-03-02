@@ -138,7 +138,7 @@ class GildedRoseTest {
     }
 
     @Test
-    void conjuredItem_decreaseQualityByFoutWhenAfterSellInDate() {
+    void conjuredItem_decreaseQualityByFourWhenAfterSellInDate() {
         Item item = new Item("Conjured", -1, 20);
         GildedRose app = new GildedRose(new Item[]{item});
 
