@@ -146,4 +146,14 @@ class GildedRoseTest {
         assertEquals(-2, item.sellIn);
         assertEquals(16, item.quality);
     }
+
+    @Test
+    void conjuredItem_qualityNeverNegative() {
+        Item item = new Item("Conjured", 0, 1);
+        GildedRose app = new GildedRose(new Item[]{item});
+
+        app.updateInventoryItems();
+        assertEquals(-1, item.sellIn);
+        assertEquals(0, item.quality);
+    }
 }
