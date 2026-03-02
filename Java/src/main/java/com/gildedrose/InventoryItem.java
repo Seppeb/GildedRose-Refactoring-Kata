@@ -21,7 +21,7 @@ public class InventoryItem {
     public void updateItem() {
         updateQuality();
         updateSellIn();
-        if (item.sellIn < 0) {
+        if (isExpired()) {
             processExpiredItems();
         }
     }
@@ -48,5 +48,9 @@ public class InventoryItem {
         if (item.quality < 50) {
             item.quality++;
         }
+    }
+
+    private boolean isExpired() {
+        return item.sellIn < 0;
     }
 }
