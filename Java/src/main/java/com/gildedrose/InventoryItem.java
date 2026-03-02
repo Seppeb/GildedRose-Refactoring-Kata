@@ -2,6 +2,10 @@ package com.gildedrose;
 
 public class InventoryItem {
 
+    public static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
+    public static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
+    public static final String AGED_BRIE = "Aged Brie";
+    public static final String CONJURED = "Conjured";
     private final Item item;
 
     public InventoryItem(Item item) {
@@ -22,10 +26,10 @@ public class InventoryItem {
 
     protected void updateQuality() {
         switch (item.name) {
-            case GildedRose.AGED_BRIE:
+            case AGED_BRIE:
                 increaseQuality();
                 break;
-            case GildedRose.BACKSTAGE_PASSES:
+            case BACKSTAGE_PASSES:
                 increaseQuality();
                 if (item.sellIn < 11 && item.quality < 50) {
                     increaseQuality();
@@ -34,9 +38,9 @@ public class InventoryItem {
                     increaseQuality();
                 }
                 break;
-            case GildedRose.SULFURAS:
+            case SULFURAS:
                 return;
-            case GildedRose.CONJURED:
+            case CONJURED:
                 decreaseQuality();
                 decreaseQuality();
                 break;
@@ -47,7 +51,7 @@ public class InventoryItem {
     }
 
     protected void updateSellIn() {
-        if (item.name.equals(GildedRose.SULFURAS)) {
+        if (item.name.equals(SULFURAS)) {
             return;
         }
         item.sellIn--;
@@ -55,15 +59,15 @@ public class InventoryItem {
 
     protected void processExpiredItems() {
         switch (item.name) {
-            case GildedRose.AGED_BRIE:
+            case AGED_BRIE:
                 increaseQuality();
                 break;
-            case GildedRose.BACKSTAGE_PASSES:
+            case BACKSTAGE_PASSES:
                 item.quality = 0;
                 break;
-            case GildedRose.SULFURAS:
+            case SULFURAS:
                 return;
-            case GildedRose.CONJURED:
+            case CONJURED:
                 decreaseQuality();
                 decreaseQuality();
                 break;
