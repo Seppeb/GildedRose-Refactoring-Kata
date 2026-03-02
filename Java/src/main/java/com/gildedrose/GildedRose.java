@@ -21,63 +21,10 @@ class GildedRose {
     }
 
     private void updateItem(Item item, InventoryItem inventoryItem) {
-        updateQuality(item, inventoryItem);
-        updateSellIn(item, inventoryItem);
+        inventoryItem.updateQuality(item);
+        inventoryItem.updateSellIn(item);
         if (item.sellIn < 0) {
-            processExpiredItems(item, inventoryItem);
-        }
-    }
-
-    private void updateQuality(Item item, InventoryItem inventoryItem) {
-        switch (item.name) {
-            case AGED_BRIE:
-                inventoryItem.increaseQuality(item);
-                break;
-            case BACKSTAGE_PASSES:
-                inventoryItem.increaseQuality(item);
-                if (item.sellIn < 11 && item.quality < 50) {
-                    inventoryItem.increaseQuality(item);
-                }
-                if (item.sellIn < 6 && item.quality < 50) {
-                    inventoryItem.increaseQuality(item);
-                }
-                break;
-            case SULFURAS:
-                return;
-            case CONJURED:
-                inventoryItem.decreaseQuality(item);
-                inventoryItem.decreaseQuality(item);
-                break;
-            default:
-                inventoryItem.decreaseQuality(item);
-                break;
-        }
-    }
-
-    private void updateSellIn(Item item, InventoryItem inventoryItem) {
-        if (item.name.equals(SULFURAS)) {
-            return;
-        }
-        item.sellIn--;
-    }
-
-    private void processExpiredItems(Item item, InventoryItem inventoryItem) {
-        switch (item.name) {
-            case AGED_BRIE:
-                inventoryItem.increaseQuality(item);
-                break;
-            case BACKSTAGE_PASSES:
-                item.quality = 0;
-                break;
-            case SULFURAS:
-                return;
-            case CONJURED:
-                inventoryItem.decreaseQuality(item);
-                inventoryItem.decreaseQuality(item);
-                break;
-            default:
-                inventoryItem.decreaseQuality(item);
-                break;
+            inventoryItem.processExpiredItems(item);
         }
     }
 }

@@ -19,4 +19,57 @@ public class InventoryItem {
             item.quality = item.quality + 1;
         }
     }
+
+    protected void processExpiredItems(Item item) {
+        switch (item.name) {
+            case GildedRose.AGED_BRIE:
+                increaseQuality(item);
+                break;
+            case GildedRose.BACKSTAGE_PASSES:
+                item.quality = 0;
+                break;
+            case GildedRose.SULFURAS:
+                return;
+            case GildedRose.CONJURED:
+                decreaseQuality(item);
+                decreaseQuality(item);
+                break;
+            default:
+                decreaseQuality(item);
+                break;
+        }
+    }
+
+    protected void updateSellIn(Item item) {
+        if (item.name.equals(GildedRose.SULFURAS)) {
+            return;
+        }
+        item.sellIn--;
+    }
+
+    protected void updateQuality(Item item) {
+        switch (item.name) {
+            case GildedRose.AGED_BRIE:
+                increaseQuality(item);
+                break;
+            case GildedRose.BACKSTAGE_PASSES:
+                increaseQuality(item);
+                if (item.sellIn < 11 && item.quality < 50) {
+                    increaseQuality(item);
+                }
+                if (item.sellIn < 6 && item.quality < 50) {
+                    increaseQuality(item);
+                }
+                break;
+            case GildedRose.SULFURAS:
+                return;
+            case GildedRose.CONJURED:
+                decreaseQuality(item);
+                decreaseQuality(item);
+                break;
+            default:
+                decreaseQuality(item);
+                break;
+        }
+    }
 }
