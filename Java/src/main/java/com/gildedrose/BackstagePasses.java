@@ -11,10 +11,10 @@ public class BackstagePasses extends InventoryItem {
     @Override
     protected void updateQuality() {
         increaseQuality();
-        if (item.sellIn < 11 && item.quality < 50) {
+        if (item.sellIn < 11) {
             increaseQuality();
         }
-        if (item.sellIn < 6 && item.quality < 50) {
+        if (item.sellIn < 6) {
             increaseQuality();
         }
     }
