@@ -16,55 +16,55 @@ class GildedRose {
     public void updateInventoryItems() {
         for (Item item : items) {
             InventoryItem inventoryItem = new InventoryItem(item);
-            updateItem(item);
+            updateItem(item, inventoryItem);
         }
     }
 
-    private void updateItem(Item item) {
-        updateQuality(item);
-        updateSellIn(item);
+    private void updateItem(Item item, InventoryItem inventoryItem) {
+        updateQuality(item, inventoryItem);
+        updateSellIn(item, inventoryItem);
         if (item.sellIn < 0) {
-            processExpiredItems(item);
+            processExpiredItems(item, inventoryItem);
         }
     }
 
-    private void updateQuality(Item item) {
+    private void updateQuality(Item item, InventoryItem inventoryItem) {
         switch (item.name) {
             case AGED_BRIE:
-                increaseQuality(item);
+                increaseQuality(item, inventoryItem);
                 break;
             case BACKSTAGE_PASSES:
-                increaseQuality(item);
+                increaseQuality(item, inventoryItem);
                 if (item.sellIn < 11 && item.quality < 50) {
-                    increaseQuality(item);
+                    increaseQuality(item, inventoryItem);
                 }
                 if (item.sellIn < 6 && item.quality < 50) {
-                    increaseQuality(item);
+                    increaseQuality(item, inventoryItem);
                 }
                 break;
             case SULFURAS:
                 return;
             case CONJURED:
-                decreaseQuality(item);
-                decreaseQuality(item);
+                decreaseQuality(item, inventoryItem);
+                decreaseQuality(item, inventoryItem);
                 break;
             default:
-                decreaseQuality(item);
+                decreaseQuality(item, inventoryItem);
                 break;
         }
     }
 
-    private void updateSellIn(Item item) {
+    private void updateSellIn(Item item, InventoryItem inventoryItem) {
         if (item.name.equals(SULFURAS)) {
             return;
         }
         item.sellIn--;
     }
 
-    private void processExpiredItems(Item item) {
+    private void processExpiredItems(Item item, InventoryItem inventoryItem) {
         switch (item.name) {
             case AGED_BRIE:
-                increaseQuality(item);
+                increaseQuality(item, inventoryItem);
                 break;
             case BACKSTAGE_PASSES:
                 item.quality = 0;
@@ -72,22 +72,22 @@ class GildedRose {
             case SULFURAS:
                 return;
             case CONJURED:
-                decreaseQuality(item);
-                decreaseQuality(item);
+                decreaseQuality(item, inventoryItem);
+                decreaseQuality(item, inventoryItem);
                 break;
             default:
-                decreaseQuality(item);
+                decreaseQuality(item, inventoryItem);
                 break;
         }
     }
 
-    private void increaseQuality(Item item) {
+    private void increaseQuality(Item item, InventoryItem inventoryItem) {
         if (item.quality < 50) {
             item.quality = item.quality + 1;
         }
     }
 
-    private void decreaseQuality(Item item) {
+    private void decreaseQuality(Item item, InventoryItem inventoryItem) {
         if (item.quality > 0) {
             item.quality = item.quality - 1;
         }
