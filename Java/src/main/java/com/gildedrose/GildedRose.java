@@ -52,7 +52,9 @@ class GildedRose {
                 increaseQuality(item);
             } else if (item.name.equals(BACKSTAGE_PASSES)) {
                 item.quality = 0;
-            } else if (!item.name.equals(SULFURAS)) {
+            } else if (item.name.equals(SULFURAS)) {
+                return;
+            } else {
                 decreaseQuality(item);
             }
         }
