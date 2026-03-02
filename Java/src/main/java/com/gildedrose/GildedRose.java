@@ -38,15 +38,16 @@ class GildedRose {
             }
         } else if (item.name.equals(SULFURAS)) {
             return;
-        } else if(item.quality > 0) {
+        } else if (item.quality > 0) {
             decreaseQuality(item);
         }
     }
 
     private void updateSellIn(Item item) {
-        if (!item.name.equals(SULFURAS)) {
-            item.sellIn = item.sellIn - 1;
+        if (item.name.equals(SULFURAS)) {
+            return;
         }
+        item.sellIn = item.sellIn - 1;
     }
 
     private void processExpiredItems(Item item) {
