@@ -10,13 +10,13 @@ public class InventoryItem {
 
     public static InventoryItem createInventoryItem(Item item) {
         switch (item.name) {
-            case AgedBrie.AGED_BRIE:
+            case AgedBrie.NAME:
                 return new AgedBrie(item);
-            case BackstagePasses.BACKSTAGE_PASSES:
+            case BackstagePasses.NAME:
                 return new BackstagePasses(item);
-            case Sulfuras.SULFURAS:
+            case Sulfuras.NAME:
                 return new Sulfuras(item);
-            case Conjured.CONJURED:
+            case Conjured.NAME:
                 return new Conjured(item);
             default:
                 return new InventoryItem(item);

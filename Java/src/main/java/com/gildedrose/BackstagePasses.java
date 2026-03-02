@@ -2,7 +2,7 @@ package com.gildedrose;
 
 public class BackstagePasses extends InventoryItem {
 
-    public static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
+    public static final String NAME = "Backstage passes to a TAFKAL80ETC concert";
 
     public BackstagePasses(Item item) {
         super(item);

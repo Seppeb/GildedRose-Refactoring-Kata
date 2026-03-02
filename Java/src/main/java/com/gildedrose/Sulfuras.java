@@ -2,7 +2,7 @@ package com.gildedrose;
 
 public class Sulfuras extends InventoryItem {
 
-    public static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
+    public static final String NAME = "Sulfuras, Hand of Ragnaros";
 
     public Sulfuras(Item item) {
         super(item);
