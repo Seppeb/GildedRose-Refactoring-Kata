@@ -45,13 +45,13 @@ public class InventoryItem {
 
     protected void decreaseQuality() {
         if (item.quality > 0) {
-            item.quality = item.quality - 1;
+            item.quality--;
         }
     }
 
     protected void increaseQuality() {
         if (item.quality < 50) {
-            item.quality = item.quality + 1;
+            item.quality++;
         }
     }
 }
