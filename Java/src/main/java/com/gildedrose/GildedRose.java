@@ -1,5 +1,7 @@
 package com.gildedrose;
 
+import static com.gildedrose.InventoryItem.*;
+
 class GildedRose {
 
     public static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
@@ -17,9 +19,5 @@ class GildedRose {
         for (Item item : items) {
             createInventoryItem(item).updateItem();
         }
-    }
-
-    private static InventoryItem createInventoryItem(Item item) {
-        return new InventoryItem(item);
     }
 }

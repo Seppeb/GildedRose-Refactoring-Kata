@@ -8,6 +8,10 @@ public class InventoryItem {
         this.item = item;
     }
 
+    public static InventoryItem createInventoryItem(Item item) {
+        return new InventoryItem(item);
+    }
+
     public void updateItem() {
         updateQuality();
         updateSellIn();
