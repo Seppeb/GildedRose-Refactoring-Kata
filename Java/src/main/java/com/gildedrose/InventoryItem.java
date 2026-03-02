@@ -15,6 +15,7 @@ public class InventoryItem {
     public static InventoryItem createInventoryItem(Item item) {
         if (item.name.equals(AGED_BRIE)) { return new AgedBrie(item); }
         if (item.name.equals(BACKSTAGE_PASSES)) { return new BackstagePasses(item); }
+        if (item.name.equals(SULFURAS)) { return new Sulfuras(item); }
         return new InventoryItem(item);
     }
 
