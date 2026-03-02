@@ -19,7 +19,7 @@ class GildedRose {
         }
     }
 
-    private InventoryItem createInventoryItem(Item item) {
+    private static InventoryItem createInventoryItem(Item item) {
         return new InventoryItem(item);
     }
 }
