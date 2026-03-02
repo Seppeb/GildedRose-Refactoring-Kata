@@ -15,7 +15,7 @@ class GildedRose {
 
     public void updateInventoryItems() {
         for (Item item : items) {
-            new InventoryItem(item).updateItem(item);
+            new InventoryItem(item).updateItem();
         }
     }
 }

@@ -8,51 +8,51 @@ public class InventoryItem {
         this.item = item;
     }
 
-    public void updateItem(Item item) {
-        updateQuality(item);
-        updateSellIn(item);
+    public void updateItem() {
+        updateQuality();
+        updateSellIn();
         if (item.sellIn < 0) {
-            processExpiredItems(item);
+            processExpiredItems();
         }
     }
 
-    protected void updateQuality(Item item) {
+    protected void updateQuality() {
         switch (item.name) {
             case GildedRose.AGED_BRIE:
-                increaseQuality(item);
+                increaseQuality();
                 break;
             case GildedRose.BACKSTAGE_PASSES:
-                increaseQuality(item);
+                increaseQuality();
                 if (item.sellIn < 11 && item.quality < 50) {
-                    increaseQuality(item);
+                    increaseQuality();
                 }
                 if (item.sellIn < 6 && item.quality < 50) {
-                    increaseQuality(item);
+                    increaseQuality();
                 }
                 break;
             case GildedRose.SULFURAS:
                 return;
             case GildedRose.CONJURED:
-                decreaseQuality(item);
-                decreaseQuality(item);
+                decreaseQuality();
+                decreaseQuality();
                 break;
             default:
-                decreaseQuality(item);
+                decreaseQuality();
                 break;
         }
     }
 
-    protected void updateSellIn(Item item) {
+    protected void updateSellIn() {
         if (item.name.equals(GildedRose.SULFURAS)) {
             return;
         }
         item.sellIn--;
     }
 
-    protected void processExpiredItems(Item item) {
+    protected void processExpiredItems() {
         switch (item.name) {
             case GildedRose.AGED_BRIE:
-                increaseQuality(item);
+                increaseQuality();
                 break;
             case GildedRose.BACKSTAGE_PASSES:
                 item.quality = 0;
@@ -60,22 +60,22 @@ public class InventoryItem {
             case GildedRose.SULFURAS:
                 return;
             case GildedRose.CONJURED:
-                decreaseQuality(item);
-                decreaseQuality(item);
+                decreaseQuality();
+                decreaseQuality();
                 break;
             default:
-                decreaseQuality(item);
+                decreaseQuality();
                 break;
         }
     }
 
-    protected void decreaseQuality(Item item) {
+    protected void decreaseQuality() {
         if (item.quality > 0) {
             item.quality = item.quality - 1;
         }
     }
 
-    protected void increaseQuality(Item item) {
+    protected void increaseQuality() {
         if (item.quality < 50) {
             item.quality = item.quality + 1;
         }
