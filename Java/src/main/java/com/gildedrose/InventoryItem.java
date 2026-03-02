@@ -28,8 +28,6 @@ public class InventoryItem {
 
     protected void updateQuality() {
         switch (item.name) {
-            case SULFURAS:
-                return;
             case CONJURED:
                 decreaseQuality();
                 decreaseQuality();
@@ -41,16 +39,11 @@ public class InventoryItem {
     }
 
     protected void updateSellIn() {
-        if (item.name.equals(SULFURAS)) {
-            return;
-        }
         item.sellIn--;
     }
 
     protected void processExpiredItems() {
         switch (item.name) {
-            case SULFURAS:
-                return;
             case CONJURED:
                 decreaseQuality();
                 decreaseQuality();
