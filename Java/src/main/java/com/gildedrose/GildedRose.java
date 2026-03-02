@@ -15,16 +15,7 @@ class GildedRose {
 
     public void updateInventoryItems() {
         for (Item item : items) {
-            InventoryItem inventoryItem = new InventoryItem(item);
-            updateItem(item, inventoryItem);
-        }
-    }
-
-    private void updateItem(Item item, InventoryItem inventoryItem) {
-        inventoryItem.updateQuality(item);
-        inventoryItem.updateSellIn(item);
-        if (item.sellIn < 0) {
-            inventoryItem.processExpiredItems(item);
+            new InventoryItem(item).updateItem(item);
         }
     }
 }

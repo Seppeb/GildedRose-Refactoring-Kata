@@ -72,4 +72,12 @@ public class InventoryItem {
                 break;
         }
     }
+
+    public void updateItem(Item item) {
+        updateQuality(item);
+        updateSellIn(item);
+        if (item.sellIn < 0) {
+            processExpiredItems(item);
+        }
+    }
 }
